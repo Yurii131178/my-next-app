@@ -1,6 +1,7 @@
 // components/NoteItem/NoteItem.tsx
 
 import { Note } from '../../lib/api';
+import css from './NoteItem.module.css';
 
 type Props = {
   item: Note;
@@ -9,7 +10,7 @@ type Props = {
 const NoteItem = ({ item }: Props) => {
   return (
     <li>
-      <p>{item.title}</p>
+      <p className={css.NoteItem}>{item.title}</p>
     </li>
   );
 };
