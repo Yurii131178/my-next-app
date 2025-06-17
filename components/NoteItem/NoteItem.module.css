@@ -1,4 +1,7 @@
-.NoteItem {
+.noteItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   padding: 16px;
   margin: 16px;
   background-color: grey;

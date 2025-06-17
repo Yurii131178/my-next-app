@@ -15,16 +15,6 @@ export type NoteListResponse = {
   total: number;
 };
 
-/////////////////////// створення штучної паузи, щоб побачити loader
-// const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
-// export const getNotes = async () => {
-//   await delay(5000);
-//   const res = await axios.get<NoteListResponse>('/notes');
-//   return res.data;
-// };
-/////////////////////
-
 axios.defaults.baseURL = 'https://next-docs-api.onrender.com';
 
 export const getNotes = async () => {
