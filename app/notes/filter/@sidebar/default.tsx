@@ -1,5 +1,3 @@
-// app/notes/filter/@sidebar/default.tsx
-
 import Link from 'next/link';
 import { getCategories } from '@/lib/api';
 

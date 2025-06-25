@@ -5,9 +5,17 @@ type Props = {
 
 const NotesLayout = ({ children, sidebar }: Props) => {
   return (
-    <section>
-      <aside>{sidebar}</aside>
-      <div>{children}</div>
+    <section style={{ display: 'flex', minHeight: '100vh' }}>
+      <aside
+        style={{
+          width: '200px',
+          padding: '1rem',
+          borderRight: '1px solid #444',
+        }}
+      >
+        {sidebar}
+      </aside>
+      <div style={{ flex: 1, padding: '1rem' }}>{children}</div>
     </section>
   );
 };
