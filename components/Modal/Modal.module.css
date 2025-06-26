@@ -1,0 +1,47 @@
+/* Modal.module.css */
+
+.overlay {
+  /* Створює напівпрозорий фон, що закриває весь екран */
+  position: fixed; /* Фіксує на екрані, не прокручується */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Займає всю ширину вікна перегляду */
+  height: 100vh; /* Займає всю висоту вікна перегляду */
+  background-color: rgba(0, 0, 0, 0.7); /* Чорний, напівпрозорий фон */
+  display: flex; /* Використовуємо flexbox для центрування контенту модального вікна */
+  justify-content: center; /* Центрує по горизонталі */
+  align-items: center; /* Центрує по вертикалі */
+  z-index: 1000; /* Перекриває інші елементи на сторінці */
+}
+
+.modalContent {
+  /* Стилі для самого вікна модального вікна */
+  background-color: white; /* Білий фон */
+  color: black; /* Чорний колір тексту */
+  width: 400px; /* Фіксована ширина */
+  height: 200px; /* Фіксована висота */
+  padding: 20px; /* Внутрішні відступи */
+  border-radius: 8px; /* Трохи закруглені кути */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Легка тінь для об'ємності */
+  display: flex; /* Можна використовувати flexbox для вмісту всередині модалки */
+  flex-direction: column; /* Елементи розташовані вертикально */
+  justify-content: space-between; /* Розтягує вміст і кнопку донизу */
+  align-items: center; /* Центрує вміст по горизонталі всередині модалки */
+}
+
+.closeButton {
+  /* Стилі для кнопки закриття */
+  margin-top: 15px; /* Відступ від вмісту */
+  padding: 8px 15px;
+  background-color: #007bff; /* Синій колір кнопки */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.closeButton:hover {
+  background-color: #0056b3; /* Темніший синій при наведенні */
+}

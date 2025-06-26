@@ -35,11 +35,9 @@ export default function RootLayout({
             {children}
             {modal}
           </main>
-          {/* <footer>
-            <p>
-              Created <time dateTime="2025">2025</time>
-            </p>
-          </footer> */}
+          <footer>
+            <p>{/* Created <time dateTime="2025">2025</time> */} FOOTER</p>
+          </footer>
         </TanStackProvider>
       </body>
     </html>

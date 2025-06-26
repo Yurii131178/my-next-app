@@ -9,7 +9,7 @@ type Props = {
 
 const NoteList = ({ notes }: Props) => {
   return (
-    <ul>
+    <ul style={{ listStyle: 'none' }}>
       {notes.map((note) => (
         <NoteItem key={note.id} item={note} />
       ))}

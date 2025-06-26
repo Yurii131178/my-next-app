@@ -1,5 +1,6 @@
 // app/@modal/(.)notes/[id]/page.tsx
 
+import Modal from '@/components/Modal/Modal';
 import { getSingleNote } from '@/lib/api';
 
 type Props = {
@@ -12,8 +13,10 @@ const NotePreview = async ({ params }: Props) => {
 
   return (
     <>
-      <h2>{note.title}</h2>
-      <p>{note.content}</p>
+      <Modal>
+        <h2>{note.title}</h2>
+        <p>{note.content}</p>
+      </Modal>
     </>
   );
 };
