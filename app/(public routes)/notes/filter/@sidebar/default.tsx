@@ -5,7 +5,15 @@ const NotesSidebar = async () => {
   const categories = await getCategories();
 
   return (
-    <ul>
+    <ul
+      style={{
+        color: 'white',
+        listStyle: 'none',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10px',
+      }}
+    >
       <li>
         <Link href={`/notes/filter/all`}>All notes</Link>
       </li>
