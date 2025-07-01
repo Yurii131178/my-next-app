@@ -1,39 +1,88 @@
-/* Modal.module.css */
-
-.overlay {
-  /* Створює напівпрозорий фон, що закриває весь екран */
-  position: fixed; /* Фіксує на екрані, не прокручується */
-  top: 0;
-  left: 0;
-  width: 100vw; /* Займає всю ширину вікна перегляду */
-  height: 100vh; /* Займає всю висоту вікна перегляду */
-  background-color: rgba(0, 0, 0, 0.7); /* Чорний, напівпрозорий фон */
-  display: flex; /* Використовуємо flexbox для центрування контенту модального вікна */
-  justify-content: center; /* Центрує по горизонталі */
-  align-items: center; /* Центрує по вертикалі */
-  z-index: 1000; /* Перекриває інші елементи на сторінці */
+@keyframes fadeInOverlay {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
 }
 
+@keyframes fadeOutOverlay {
+  from {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes scaleInModal {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOutModal {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+/* Додамо анімацію появи для оверлея */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeInOverlay 0.3s ease forwards;
+}
+
+/* Якщо хочеш додати зникнення — додай клас .overlay--hidden і анімуй fadeOut */
+.overlay--hidden {
+  animation: fadeOutOverlay 0.3s ease forwards;
+}
+
+/* Анімація появи модалки */
 .modalContent {
-  /* Стилі для самого вікна модального вікна */
-  background-color: white; /* Білий фон */
-  color: black; /* Чорний колір тексту */
-  width: 400px; /* Фіксована ширина */
-  height: 200px; /* Фіксована висота */
-  padding: 20px; /* Внутрішні відступи */
-  border-radius: 8px; /* Трохи закруглені кути */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Легка тінь для об'ємності */
-  display: flex; /* Можна використовувати flexbox для вмісту всередині модалки */
-  flex-direction: column; /* Елементи розташовані вертикально */
-  justify-content: space-between; /* Розтягує вміст і кнопку донизу */
-  align-items: center; /* Центрує вміст по горизонталі всередині модалки */
+  background-color: white;
+  color: black;
+  width: 400px;
+  height: 200px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  animation: scaleInModal 0.3s ease forwards;
+}
+
+/* Анімація зникнення — додай клас .modalContent--hidden */
+.modalContent--hidden {
+  animation: scaleOutModal 0.3s ease forwards;
 }
 
 .closeButton {
-  /* Стилі для кнопки закриття */
-  margin-top: 15px; /* Відступ від вмісту */
+  margin-top: 15px;
   padding: 8px 15px;
-  background-color: #007bff; /* Синій колір кнопки */
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
@@ -43,5 +92,5 @@
 }
 
 .closeButton:hover {
-  background-color: #0056b3; /* Темніший синій при наведенні */
+  background-color: #0056b3;
 }

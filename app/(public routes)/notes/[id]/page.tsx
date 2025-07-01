@@ -100,6 +100,20 @@ type Props = {
   params: Promise<{ id: string }>;
 };
 
+// Динамічні мета-теги === асинхронна функція generateMetadata():
+
+export async function generateMetadata({ params }: Props) {
+  const { id } = await params;
+  const note = await getSingleNote(id);
+
+  return {
+    title: `Note: ${note.title}`,
+    description: note.content.slice(0, 30),
+  };
+}
+
+//Назва нотатки тепер відображається у вкладці браузера:
+
 const NoteDetails = async ({ params }: Props) => {
   const { id } = await params;
   const queryClient = new QueryClient();
@@ -118,3 +132,5 @@ const NoteDetails = async ({ params }: Props) => {
 
 export default NoteDetails;
 //.................................
+
+// ===================з конспекту=======

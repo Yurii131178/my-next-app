@@ -8,11 +8,16 @@ const Profile = () => {
       <p>
         Some description: Lorem, ipsum dolor sit amet consectetur adipisicing
         elit. Cumque non quis, vero consectetur eum at commodi facere error,
-        laborum, rerum labore corrupti neque veritatis sed minima et nam. Autem,
-        cumque.
+        laborum,
       </p>
-
+      <br />
+      <hr />
+      <br />
       <Link href="/profile/edit">Edit profile</Link>
+      <br />
+      <br />
+      <hr />
+      <br />
     </section>
   );
 };
