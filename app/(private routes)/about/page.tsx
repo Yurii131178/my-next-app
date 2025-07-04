@@ -1,12 +1,12 @@
 import { Metadata } from 'next';
-import { redirect } from 'next/navigation';
+// import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
-  title: 'About page',
+  title: 'About',
 };
 
 const About = () => {
-  redirect('/');
-  return null;
+  // redirect('/');
+  return <div>About</div>;
 };
 export default About;

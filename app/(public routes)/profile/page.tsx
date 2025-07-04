@@ -1,4 +1,9 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
+export const metadata: Metadata = {
+  title: 'Ptofile',
+  description: 'page far User profile',
+};
 
 const Profile = () => {
   return (
@@ -13,10 +18,10 @@ const Profile = () => {
       <br />
       <hr />
       <br />
-      <Link href="/profile/edit">Edit profile</Link>
+      <Link style={{ color: 'red' }} href="/profile/edit">
+        Edit profile
+      </Link>
       <br />
-      <br />
-      <hr />
       <br />
     </section>
   );

@@ -1,6 +1,6 @@
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import type { Metadata } from 'next';
-// import { Geist, Geist_Mono } from 'next/font/google';
+// import { Geist, Geist_Mono } from 'next/font/google';         // Прибираємо!!!
 import './globals.css';
 import Header from '../components/Header/Header';
 
@@ -16,12 +16,26 @@ import Header from '../components/Header/Header';
 
 // ----------------Імпортуємо новий шрифт--------------------
 
-import { Roboto } from 'next/font/google';
+import { Lobster, Michroma, Roboto } from 'next/font/google';
 
 const roboto = Roboto({
   subsets: ['latin'],
   weight: ['400', '700'],
   variable: '--font-roboto',
+  display: 'swap',
+});
+
+const lobster = Lobster({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-lobster',
+  display: 'swap',
+});
+
+const michroma = Michroma({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-michroma',
   display: 'swap',
 });
 
@@ -31,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'OpenGraph',
     description: 'some description',
-    url: `https://www.edu.goit.global/uk`,
+    url: `https://www.edu.goit.global/uk`, // має бути реальна, робоча URL-а
     siteName: 'NoteHub',
     images: [
       {
@@ -55,14 +69,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       {/* <body className={`${geistSans.variable} ${geistMono.variable}`}>   -- Прибираємо старі класи з <body>*/}
+
       {/* додаємо клас у розмітку */}
-      <body className={roboto.variable}>
+
+      <body
+        className={`${roboto.variable} ${lobster.variable} ${michroma.variable}`}
+      >
         <TanStackProvider>
           <Header />
           <main>
             {children}
             {modal}
           </main>
+          <hr />
           <footer>
             <p>{/* Created <time dateTime="2025">2025</time> */} FOOTER</p>
           </footer>

@@ -10,7 +10,7 @@ const NotesLayout = ({ children, sidebar }: Props) => {
     <section style={{ display: 'flex', minHeight: '100vh' }}>
       <aside
         style={{
-          width: '200px',
+          width: '250px',
           padding: '1rem',
           borderRight: '1px solid #444',
         }}

@@ -7,7 +7,10 @@ const NotesSidebar = async () => {
   return (
     <>
       {/* додавємо посилання на пейджу CreateNote */}
-      <Link href="/notes/action/create">CreateNote</Link>
+      <br />
+      <Link href="/notes/action/create">Create new Note</Link>
+      <hr />
+      <br />
       <ul
         style={{
           color: 'white',

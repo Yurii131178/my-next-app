@@ -107,7 +107,7 @@ export async function generateMetadata({ params }: Props) {
   const note = await getSingleNote(id);
 
   return {
-    title: `Note: ${note.title}`,
+    title: `${note.title}`,
     description: note.content.slice(0, 30),
   };
 }
