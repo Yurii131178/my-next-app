@@ -80,7 +80,7 @@ import { useMutation } from '@tanstack/react-query';
 import { Category, createNote, NewNoteData } from '@/lib/api';
 import styles from './NoteForm.module.css';
 // ІМПОРТУЄМО ХУК
-import { useNoteDraftStore } from '@/lib/stores/NoteStore';
+import { useNoteDraftStore } from '@/lib/stores/noteStore';
 
 type Props = {
   categories: Category[];
