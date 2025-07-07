@@ -29,7 +29,9 @@ export type NewNoteData = {
   categoryId: string;
 };
 
-axios.defaults.baseURL = 'https://next-docs-api.onrender.com';
+// axios.defaults.baseURL = 'https://next-docs-api.onrender.com';
+
+axios.defaults.baseURL = 'http://localhost:3000/api';
 
 export const getNotes = async (categoryId?: string) => {
   const res = await axios.get<NoteListResponse>('/notes', {
