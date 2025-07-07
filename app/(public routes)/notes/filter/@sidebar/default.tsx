@@ -6,20 +6,10 @@ const NotesSidebar = async () => {
 
   return (
     <>
-      {/* додавємо посилання на пейджу CreateNote */}
+      <Link href="/notes/action/create">Create note</Link>
       <br />
-      <Link href="/notes/action/create">Create new Note</Link>
       <hr />
-      <br />
-      <ul
-        style={{
-          color: 'white',
-          listStyle: 'none',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '10px',
-        }}
-      >
+      <ul>
         <li>
           <Link href={`/notes/filter/all`}>All notes</Link>
         </li>

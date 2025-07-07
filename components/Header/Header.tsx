@@ -108,9 +108,6 @@ const Header = async () => {
           <li>
             <Link href="/about">About</Link>
           </li>
-          <li>
-            <Link href="/fun">FUN</Link>
-          </li>
         </ul>
       </nav>
     </header>
