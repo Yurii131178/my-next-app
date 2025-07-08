@@ -33,9 +33,9 @@ export type NewNoteData = {
 
 axios.defaults.baseURL = 'http://localhost:3000/api';
 
-export const getNotes = async (categoryId?: string) => {
+export const getNotes = async (categoryId?: string, title?: string) => {
   const res = await axios.get<NoteListResponse>('/notes', {
-    params: { categoryId },
+    params: { categoryId, title },
   });
   return res.data;
 };

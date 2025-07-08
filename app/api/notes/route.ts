@@ -5,9 +5,10 @@ import { api } from '../api';
 
 export async function GET(request: NextRequest) {
   const categoryId = request.nextUrl.searchParams.get('categoryId');
+  const title = request.nextUrl.searchParams.get('title');
 
   const { data } = await api('/notes', {
-    params: { categoryId },
+    params: { categoryId, title },
   });
 
   if (data) {
@@ -30,17 +31,3 @@ export async function POST(request: NextRequest) {
 
   return NextResponse.json({ error: 'Failed to create note' }, { status: 500 });
 }
-
-/**Зверни увагу:
-
-*будь-яка функція хендлера отримує об’єкт request як параметр;
-*ми використовуємо фільтрацію, передаючи параметри через searchParams;
-*через request.nextUrl маємо повний доступ до запиту, включаючи query-параметри. 
-=================================================================================
-Під час виклику createNote у компоненті ви передаєте обʼєкт нової нотатки. 
-Ці дані автоматично потрапляють у request на Next-сервері, 
-і функція POST обробляє їх за допомогою request.json().
-
-Next автоматично визначає, яку функцію викликати – GET чи POST – залежно від типу запиту.
-
-*/
