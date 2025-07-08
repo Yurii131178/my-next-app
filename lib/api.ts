@@ -4,9 +4,13 @@ import axios from 'axios';
 
 // axios.defaults.baseURL = 'http://localhost:3000/api'; // переїодимо до авторизації = додамо
 
+// Видаляємо стару логіку baseURL
+// axios.defaults.baseURL = 'http://localhost:3000/api'
+
+// Створюємо інстанс axios
 const nextServer = axios.create({
-  baseURL: 'https://next-docs-api.onrender.com',
-  withCredentials: true,
+  baseURL: 'http://localhost:3000/api',
+  withCredentials: true, // дозволяє axios працювати з cookie
 });
 
 export type Note = {
@@ -78,6 +82,7 @@ export type User = {
   email: string;
   userName?: string;
   photoUrl?: string;
+  // role: 'USER';
   createdAt: Date;
   updatedAt: Date;
 };
@@ -93,7 +98,7 @@ export type LoginRequest = {
   email: string;
   password: string;
 };
-export const login = async (payload: RegisterRequest) => {
+export const login = async (payload: LoginRequest) => {
   const res = await nextServer.post<User>('/auth/login', payload);
   return res.data;
 };
