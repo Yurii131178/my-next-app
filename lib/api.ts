@@ -82,7 +82,18 @@ export type User = {
   updatedAt: Date;
 };
 
-export const register = async (data: RegisterRequest) => {
-  const res = await nextServer.post<User>('/auth/register', data);
+export const register = async (payload: RegisterRequest) => {
+  const res = await nextServer.post<User>('/auth/register', payload);
+  return res.data;
+};
+
+// Функція login
+
+export type LoginRequest = {
+  email: string;
+  password: string;
+};
+export const login = async (payload: RegisterRequest) => {
+  const res = await nextServer.post<User>('/auth/login', payload);
   return res.data;
 };
