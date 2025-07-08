@@ -59,3 +59,30 @@ export const createNote = async (payload: NewNoteData) => {
   const res = await nextServer.post<Note>('/notes', payload);
   return res.data;
 };
+
+// Функція register
+/**
+ * Реєстрація – це POST-запит. 
+ * Ми відправляємо дані, які користувач ввів у формі, 
+ * а сервер створює новий обліковий запис і повертає нам об’єкт користувача.
+Опишемо типи запиту та створимо функцію, яка його виконає: */
+
+export type RegisterRequest = {
+  email: string;
+  password: string;
+  userName: string;
+};
+
+export type User = {
+  id: string;
+  email: string;
+  userName?: string;
+  photoUrl?: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export const register = async (data: RegisterRequest) => {
+  const res = await nextServer.post<User>('/auth/register', data);
+  return res.data;
+};
