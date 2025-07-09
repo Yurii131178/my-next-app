@@ -102,3 +102,19 @@ export const login = async (payload: LoginRequest) => {
   const res = await nextServer.post<User>('/auth/login', payload);
   return res.data;
 };
+
+// Реалізація перевірки сесії
+
+// Оскільки логікою створення і перевірки токенів керує бекенд, щоб дізнатися, чи дійсні поточні токени в браузері, нам потрібно зробити GET-запит до /auth/session. У відповідь ми отримаємо або нові токени, або 401, що означає, що користувач не авторизований.
+
+// Створюємо метод checkSession:
+// lib/api.ts
+
+type CheckSessionRequest = {
+  success: boolean;
+};
+
+export const checkSession = async () => {
+  const res = await nextServer.get<CheckSessionRequest>('/auth/session');
+  return res.data.success;
+};
