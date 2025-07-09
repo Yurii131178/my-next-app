@@ -123,3 +123,9 @@ export const getMe = async () => {
   const { data } = await nextServer.get<User>('/auth/me');
   return data;
 };
+
+/**запит до API - logout*/
+
+export const logout = async (): Promise<void> => {
+  await nextServer.post('/auth/logout');
+};
