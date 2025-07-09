@@ -36,7 +36,7 @@ const SignIn = () => {
 
   return (
     <>
-      <h1>Sign up</h1>
+      <h1>Sign in</h1>
       <form action={handleSubmit} className={styles.form}>
         <label className={styles.label}>
           Email

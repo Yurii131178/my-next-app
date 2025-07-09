@@ -84,24 +84,77 @@
 
 //////////////////////
 
-import Link from 'next/link';
-import { getCategories } from '@/lib/api';
-import CategoriesMenu from '../CategoriesMenu/CategoriesMenu';
+// import Link from 'next/link';
+// import { getCategories } from '@/lib/api';
+// import CategoriesMenu from '../CategoriesMenu/CategoriesMenu';
+// import css from './Header.module.css';
+// import AuthNavigation from '../AuthNavigation/AuthNavigation';
+
+// const Header = async () => {
+//   const categories = await getCategories();
+
+//   return (
+//     <header className={css.header}>
+//       <Link href="/" aria-label="Home">
+//         NoteHub
+//       </Link>
+//       <nav aria-label="Main Navigation">
+//         <ul className={css.navigation}>
+//           <li>
+//             <CategoriesMenu categories={categories} />
+//           </li>
+//           <li>
+//             <Link href="/profile">Profile</Link>
+//           </li>
+//           <li>
+//             <Link href="/about">About</Link>
+//           </li>
+//           {/* Нові посилання */}
+//           {/* <li>
+//             <Link href="/sign-in">Login</Link>
+//           </li> */}
+//           {/* <li>
+//             <Link href="/sign-up">Register</Link>
+//           </li> */}
+
+//           {/*ми прибираємо Register/Login та кладемо замість них*/}
+//           {/* Відображаємо компонент */}
+//           <AuthNavigation />
+//         </ul>
+//       </nav>
+//     </header>
+//   );
+// };
+
+// export default Header;
+
+////////Оновлюємо Header
+// Ми приберемо з Header виклик getCategories://///////
+
+// components/Header/Header.tsx
+
 import css from './Header.module.css';
+import Link from 'next/link';
+import CategoriesMenu from '../CategoriesMenu/CategoriesMenu';
 import AuthNavigation from '../AuthNavigation/AuthNavigation';
 
-const Header = async () => {
-  const categories = await getCategories();
+const Header = () => {
+  // Прибираємо запит
+  // const categories = await getCategories()
 
   return (
     <header className={css.header}>
       <Link href="/" aria-label="Home">
-        NoteHub
+        Note HUB
       </Link>
       <nav aria-label="Main Navigation">
         <ul className={css.navigation}>
           <li>
-            <CategoriesMenu categories={categories} />
+            <Link href="/">Home</Link>
+          </li>
+          <li>
+            {/* Пропс categories тепер не приходять з SSR */}
+            <CategoriesMenu />
           </li>
           <li>
             <Link href="/profile">Profile</Link>
@@ -109,16 +162,6 @@ const Header = async () => {
           <li>
             <Link href="/about">About</Link>
           </li>
-          {/* Нові посилання */}
-          {/* <li>
-            <Link href="/sign-in">Login</Link>
-          </li> */}
-          {/* <li>
-            <Link href="/sign-up">Register</Link>
-          </li> */}
-
-          {/*ми прибираємо Register/Login та кладемо замість них*/}
-          {/* Відображаємо компонент */}
           <AuthNavigation />
         </ul>
       </nav>
