@@ -6,10 +6,13 @@ import styles from './SignUp.module.css';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { register, RegisterRequest } from '@/lib/api';
+import { useAuthStore } from '@/lib/stores/authStore';
 
 const SignUp = () => {
   const router = useRouter();
   const [error, setError] = useState('');
+  // Отримуємо метод із стора
+  const setUser = useAuthStore((state) => state.setUser);
 
   const handleSubmit = async (formData: FormData) => {
     try {
@@ -19,6 +22,8 @@ const SignUp = () => {
       const res = await register(formValues);
       // Виконуємо редірект або відображаємо помилку
       if (res) {
+        // Записуємо користувача у глобальний стан
+        setUser(res);
         router.push('/profile');
       } else {
         setError('Invalid email or password');
@@ -49,6 +54,7 @@ const SignUp = () => {
           Register
         </button>
       </form>
+      {error && <p>{error}</p>}
     </>
   );
 };

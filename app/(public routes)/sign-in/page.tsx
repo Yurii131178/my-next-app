@@ -8,10 +8,13 @@ import styles from '../sign-up/SignUp.module.css';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { login, LoginRequest } from '@/lib/api';
+import { useAuthStore } from '@/lib/stores/authStore';
 
 const SignIn = () => {
   const router = useRouter();
   const [error, setError] = useState('');
+  // Отримуємо метод із стора
+  const setUser = useAuthStore((state) => state.setUser);
 
   const handleSubmit = async (formData: FormData) => {
     try {
