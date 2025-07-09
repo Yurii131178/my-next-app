@@ -118,3 +118,8 @@ export const checkSession = async () => {
   const res = await nextServer.get<CheckSessionRequest>('/auth/session');
   return res.data.success;
 };
+
+export const getMe = async () => {
+  const { data } = await nextServer.get<User>('/auth/me');
+  return data;
+};

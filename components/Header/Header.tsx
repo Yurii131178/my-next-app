@@ -88,6 +88,7 @@ import Link from 'next/link';
 import { getCategories } from '@/lib/api';
 import CategoriesMenu from '../CategoriesMenu/CategoriesMenu';
 import css from './Header.module.css';
+import AuthNavigation from '../AuthNavigation/AuthNavigation';
 
 const Header = async () => {
   const categories = await getCategories();
@@ -109,12 +110,16 @@ const Header = async () => {
             <Link href="/about">About</Link>
           </li>
           {/* Нові посилання */}
-          <li>
+          {/* <li>
             <Link href="/sign-in">Login</Link>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <Link href="/sign-up">Register</Link>
-          </li>
+          </li> */}
+
+          {/*ми прибираємо Register/Login та кладемо замість них*/}
+          {/* Відображаємо компонент */}
+          <AuthNavigation />
         </ul>
       </nav>
     </header>
