@@ -25,7 +25,7 @@
 import { create } from 'zustand';
 // 1. Імпортуємо функцію
 import { persist } from 'zustand/middleware';
-import { NewNoteData } from '../api/api';
+import { NewNoteData } from '../api/clientApi';
 
 type NoteDraftStore = {
   draft: NewNoteData;
