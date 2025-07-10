@@ -1,4 +1,4 @@
-import { getNotes } from '@/lib/api';
+import { getNotes } from '@/lib/api/clientApi';
 import NoteList from '@/components/NoteList/NoteList';
 
 const Notes = async () => {

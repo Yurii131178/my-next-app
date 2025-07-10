@@ -21,7 +21,7 @@
 
 Для цього нам потрібно у компоненті NoteItem.tsx додати логіку навігації, за допомогою Link */
 import Link from 'next/link';
-import { Note } from '@/lib/api';
+import { Note } from '@/lib/api/clientApi';
 import css from './NoteItem.module.css';
 
 type Props = {

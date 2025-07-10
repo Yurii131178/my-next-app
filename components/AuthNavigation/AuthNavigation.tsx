@@ -39,7 +39,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '../../lib/stores/authStore';
-import { logout } from '@/lib/api';
+import { logout } from '@/lib/api/clientApi';
 
 const AuthNavigation = () => {
   const router = useRouter();

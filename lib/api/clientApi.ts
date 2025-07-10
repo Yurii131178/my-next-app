@@ -1,17 +1,4 @@
-import axios from 'axios';
-
-// axios.defaults.baseURL = 'https://next-docs-api.onrender.com';
-
-// axios.defaults.baseURL = 'http://localhost:3000/api'; // переїодимо до авторизації = додамо
-
-// Видаляємо стару логіку baseURL
-// axios.defaults.baseURL = 'http://localhost:3000/api'
-
-// Створюємо інстанс axios
-const nextServer = axios.create({
-  baseURL: 'http://localhost:3000/api',
-  withCredentials: true, // дозволяє axios працювати з cookie
-});
+import { nextServer } from './api';
 
 export type Note = {
   id: string;
@@ -63,13 +50,6 @@ export const createNote = async (payload: NewNoteData) => {
   const res = await nextServer.post<Note>('/notes', payload);
   return res.data;
 };
-
-// Функція register
-/**
- * Реєстрація – це POST-запит. 
- * Ми відправляємо дані, які користувач ввів у формі, 
- * а сервер створює новий обліковий запис і повертає нам об’єкт користувача.
-Опишемо типи запиту та створимо функцію, яка його виконає: */
 
 export type RegisterRequest = {
   email: string;

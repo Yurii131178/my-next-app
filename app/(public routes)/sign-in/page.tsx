@@ -7,7 +7,7 @@ import styles from '../sign-up/SignUp.module.css';
 // Додаємо імпорти
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { login, LoginRequest } from '@/lib/api';
+import { login, LoginRequest } from '@/lib/api/clientApi';
 import { useAuthStore } from '@/lib/stores/authStore';
 
 const SignIn = () => {
