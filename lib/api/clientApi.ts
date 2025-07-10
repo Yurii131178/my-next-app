@@ -122,3 +122,13 @@ export const updateMe = async (payload: UpdateUserRequest) => {
   const res = await nextServer.put<User>('/auth/me', payload);
   return res.data;
 };
+
+/**Завантаження на сервер
+Тепер у компоненті EditProfile додамо завантаження файлу на сервер. Додаємо у clientApi.ts метод для завантаження файлу: */
+
+export const uploadImage = async (file: File): Promise<string> => {
+  const formData = new FormData();
+  formData.append('file', file);
+  const { data } = await nextServer.post('/upload', formData);
+  return data.url;
+};

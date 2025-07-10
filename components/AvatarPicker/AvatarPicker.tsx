@@ -176,6 +176,11 @@
 - Через useEffect запишемо це значення в стан.*/
 //=====================================================//
 
+/**У самому компоненті AvatarPicker:
+
+оновлюємо пропси
+викликаємо onChangePhoto при зміні та видаленні файлу */
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -183,10 +188,12 @@ import Image from 'next/image';
 import css from './AvatarPicker.module.css';
 
 type Props = {
+  onChangePhoto: (file: File | null) => void; // оновлюємо пропси onChangePhoto
   profilePhotoUrl?: string;
 };
 
-const AvatarPicker = ({ profilePhotoUrl }: Props) => {
+//оновлюємо пропси onChangePhoto
+const AvatarPicker = ({ profilePhotoUrl, onChangePhoto }: Props) => {
   const [previewUrl, setPreviewUrl] = useState<string>('');
   const [error, setError] = useState<string>('');
 
@@ -210,6 +217,9 @@ const AvatarPicker = ({ profilePhotoUrl }: Props) => {
         setError('Max file size 5MB');
         return;
       }
+      //викликаємо onChangePhoto при зміні файлу
+
+      onChangePhoto(file); // передаємо файл у батьківський компонент
 
       const reader = new FileReader();
 
@@ -221,7 +231,9 @@ const AvatarPicker = ({ profilePhotoUrl }: Props) => {
     }
   };
 
+  //викликаємо onChangePhoto при видаленні файлу
   const handleRemove = () => {
+    onChangePhoto(null); // очищуємо батьківський стан
     setPreviewUrl('');
   };
 
