@@ -180,18 +180,19 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import css from './AvatarPicker.module.css';
 
 type Props = {
   profilePhotoUrl?: string;
 };
 
 const AvatarPicker = ({ profilePhotoUrl }: Props) => {
-  const [previewUrl, setpreviewUrl] = useState<string>('');
+  const [previewUrl, setPreviewUrl] = useState<string>('');
   const [error, setError] = useState<string>('');
 
   useEffect(() => {
     if (profilePhotoUrl) {
-      setpreviewUrl(profilePhotoUrl);
+      setPreviewUrl(profilePhotoUrl);
     }
   }, [profilePhotoUrl]);
 
@@ -213,25 +214,47 @@ const AvatarPicker = ({ profilePhotoUrl }: Props) => {
       const reader = new FileReader();
 
       reader.onloadend = () => {
-        setpreviewUrl(reader.result as string);
+        setPreviewUrl(reader.result as string);
       };
 
       reader.readAsDataURL(file);
     }
   };
 
+  const handleRemove = () => {
+    setPreviewUrl('');
+  };
+
   return (
     <div>
-      {/* Відображаємо прев'ю якщо зображення існує */}
-      {previewUrl ? (
-        <Image src={previewUrl} alt="Preview" width={300} height={300} />
-      ) : (
-        <label>
+      <div className={css.picker}>
+        {previewUrl && (
+          <Image
+            src={previewUrl}
+            alt="Preview"
+            width={300}
+            height={300}
+            className={css.avatar}
+          />
+        )}
+        <label
+          className={previewUrl ? `${css.wrapper} ${css.reload}` : css.wrapper}
+        >
           📷 Choose photo
-          <input type="file" accept="image/*" onChange={handleFileChange} />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className={css.input}
+          />
         </label>
-      )}
-      {error && <p>{error}</p>}
+        {previewUrl && (
+          <button className={css.remove} onClick={handleRemove}>
+            ❌
+          </button>
+        )}
+      </div>
+      {error && <p className={css.error}>{error}</p>}
     </div>
   );
 };

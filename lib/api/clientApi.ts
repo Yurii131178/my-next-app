@@ -109,3 +109,16 @@ export const getMe = async () => {
 export const logout = async (): Promise<void> => {
   await nextServer.post('/auth/logout');
 };
+
+/** Форма редагування профілю
+Тепер додамо на сторінку EditProfile форму редагування профілю. Створюємо метод в clientApi.ts:*/
+
+export type UpdateUserRequest = {
+  userName?: string;
+  photoUrl?: string;
+};
+
+export const updateMe = async (payload: UpdateUserRequest) => {
+  const res = await nextServer.put<User>('/auth/me', payload);
+  return res.data;
+};
