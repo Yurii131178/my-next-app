@@ -66,12 +66,12 @@
 
 import { useEffect, useState } from 'react';
 import AvatarPicker from '@/components/AvatarPicker/AvatarPicker';
-import { getMe, updateMe } from '@/lib/api/clientApi';
+import { getMe, updateMe, uploadImage } from '@/lib/api/clientApi';
 
 const EditProfile = () => {
   const [userName, setUserName] = useState('');
   const [photoUrl, setPhotoUrl] = useState('');
-  const [imagaFile, setImageFile] = useState<File | null>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
   useEffect(() => {
     getMe().then((user) => {
@@ -86,7 +86,12 @@ const EditProfile = () => {
 
   const handleSaveUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await updateMe({ userName, photoUrl });
+    try {
+      const newPhotoUrl = imageFile ? await uploadImage(imageFile) : '';
+      await updateMe({ userName, photoUrl: newPhotoUrl });
+    } catch (error) {
+      console.error('Oops, some error:', error);
+    }
   };
 
   return (
@@ -105,3 +110,23 @@ const EditProfile = () => {
 };
 
 export default EditProfile;
+
+//////////////////
+
+// app/(private routes)/profile/edit/page.tsx
+
+//  import { updateMe, getMe, uploadImage } from '@/lib/api/clientApi';
+
+// ...
+
+// const handleSaveUser = async (event: React.FormEvent<HTMLFormElement>) => {
+//   event.preventDefault();
+//   try {
+//     const newPhotoUrl = imageFile ? await uploadImage(imageFile) : '';
+//     await updateMe({ userName, photoUrl: newPhotoUrl });
+//   } catch (error) {
+//     console.error('Oops, some error:', error);
+//   }
+// };
+
+// // ...
