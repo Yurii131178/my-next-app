@@ -1,0 +1,30 @@
+.userItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  list-style: none;
+  background-color: transparent;
+  border-radius: 8px;
+}
+
+.userItem p {
+  margin: 0;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.userItem button {
+  padding: 6px 12px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.userItem button:hover {
+  background-color: #e60000;
+}
